@@ -10,27 +10,27 @@ const app = express();
 
 app.use(bodyParser.json({ limit: '20mb' }));
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     'Access-Control-Allow-Origin',
-//      'http://localhost:5173'
-//     //'https://main--mern-stack-clone.netlify.app'
-//   );
-//   res.setHeader(
-//     'Access-Control-Allow-Methods',
-//     'GET, POST, PUT, PATCH, DELETE'
-//   );
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+app.use((req, res, next) => {
+    res.setHeader(
+        'Access-Control-Allow-Origin',
+        // 'http://localhost:3000'
+        'https://main--mern-stack-clone.netlify.app'
+    );
+    res.setHeader(
+        'Access-Control-Allow-Methods',
+        'GET, POST, PUT, PATCH, DELETE'
+    );
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-//   next();
-// });
+    next();
+});
 
 app.use(cookieParser());
 
-app.use('/api', authRouter);
-app.use('/api', roomRouter);
-app.use('/api', userRouter);
-app.use('/api', bookingRouter);
+app.use('/api/v1', authRouter);
+app.use('/api/v1', roomRouter);
+app.use('/api/v1', userRouter);
+app.use('/api/v1', bookingRouter);
 
 module.exports = app;

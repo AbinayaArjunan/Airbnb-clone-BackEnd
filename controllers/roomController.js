@@ -66,7 +66,11 @@ exports.uploadImage = async (req, res) => {
 };
 // https://i.ibb.co/DY8D2Xm/23.webp
 
-
+// C:\Users\koush\Desktop\Projects\Airbnb_Mern_Stack_Clone\Airbnb_Clone_MERN\Back_end\routes\uploads\images-1691042472640-661432702.webp
+// C:\Users\koush\Desktop\Projects\Airbnb_Mern_Stack_Clone\Airbnb_Clone_MERN\Back_end\routes\uploads\images-1691042472641-866727738.webp
+// C:\Users\koush\Desktop\Projects\Airbnb_Mern_Stack_Clone\Airbnb_Clone_MERN\Back_end\routes\uploads\images-1691042472643-210148842.webp
+// C:\Users\koush\Desktop\Projects\Airbnb_Mern_Stack_Clone\Airbnb_Clone_MERN\Back_end\routes\uploads\images-1691042472647-795086996.webp
+// C:\Users\koush\Desktop\Projects\Airbnb_Mern_Stack_Clone\Airbnb_Clone_MERN\Back_end\routes\uploads\images-1691042472649-17119047.webp
 
 exports.getAllRooms = async (req, res) => {
   try {

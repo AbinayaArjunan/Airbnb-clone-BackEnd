@@ -1,17 +1,18 @@
-const dotenv = require('dotenv');
+//const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const app = require('./app');
-const config=require('./utils/config')
+const config = require('./utils/config');
+
 // dotenv.config({ path: './config.env' });
 
-// const MONGO_URI = process.env.DATABASE.replace(
+// const DB = process.env.DATABASE.replace(
 //   '<PASSWORD>',
 //   process.env.DATABASE_PASSWORD
 // );
 
 mongoose
   .connect(config.MONGO_URI)
-  .then(() => console.log(' connected successfully'))
+  .then(() => console.log('DB connection successful'))
   .catch(err => console.log('Error Connecting to DB:', err));
 
 const port = config.PORT || 3000;

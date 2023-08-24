@@ -24,7 +24,7 @@ const upload = multer({ storage });
 router
   .route('/')
   .get(roomController.getAllRooms)
-  .post(roomController.createRoom);
+  .post(auth.protect, roomController.createRoom);
 
 router.route('/search').get(roomController.getRoomBySearchParam);
 

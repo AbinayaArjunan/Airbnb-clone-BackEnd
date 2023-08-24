@@ -1,12 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const config = require('../utils/config');
-
-const JWT_ACCESS_TOKEN = config.JWT_ACCESS_TOKEN;
-const JWT_REFRESH_TOKEN = config.JWT_REFRESH_TOKEN;
 
 const accessToken = id => {
-  return jwt.sign({ id }, JWT_ACCESS_TOKEN, {
+  return jwt.sign({ id }, process.env.JWT_ACCESS_TOKEN, {
     expiresIn: '15m'
   });
 };
@@ -22,7 +18,7 @@ exports.refresh = (req, res) => {
   const refreshTokenCookie = cookies.jwt;
   jwt.verify(
     refreshTokenCookie,
-    JWT_REFRESH_TOKEN,
+    process.env.JWT_REFRESH_TOKEN,
     async (err, decoded) => {
       if (err) return res.status(401).json({ status: 401 });
       const foundUser = await User.findById(decoded.id).select('-password');
