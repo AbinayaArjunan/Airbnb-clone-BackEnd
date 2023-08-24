@@ -4,11 +4,11 @@ const auth = require('../middleware/authMiddleWare');
 
 const Router = express.Router();
 
-Router.route('/room/booking').post(
+Router.post('/room/booking',
   auth.protect,
   bookingController.createBooking
 );
-Router.route('/mybookings/:id').get(
+Router.get('/mybookings/:id',
   auth.protect,
   bookingController.getAllBooking
 );

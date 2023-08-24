@@ -21,21 +21,15 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router
-  .route('/')
-  .get(roomController.getAllRooms)
-  .post(auth.protect, roomController.createRoom);
+router.get('/',roomController.getAllRooms)
+router.post('/', auth.protect,roomController.createRoom);
 
-router.route('/search').get(roomController.getRoomBySearchParam);
+router.get('/search',roomController.getRoomBySearchParam);
 
-router
-  .route('/upload')
-  .post(upload.array('images', 5), roomController.uploadImage);
+router.post('/upload',upload.array('images', 5), roomController.uploadImage);
 
-router
-  .route('/:id')
-  .get(auth.protect, roomController.getRoom)
-  .patch(auth.protect, roomController.updateRoom)
-  .delete(auth.protect, roomController.deleteRoom);
+router.get('/:id',auth.protect, roomController.getRoom)
+router.patch('/:id',auth.protect, roomController.updateRoom)
+router.delete('/:id',auth.protect, roomController.deleteRoom);
 
 module.exports = router;
