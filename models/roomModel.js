@@ -39,6 +39,6 @@ const roomSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now() }
 });
 
-const Room = mongoose.model('Room', roomSchema);
+const Room = mongoose.model('Room', roomSchema,'rooms');
 
 module.exports = Room;

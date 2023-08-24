@@ -1,15 +1,19 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+const config = require('../utils/config');
+
+const JWT_ACCESS_TOKEN = config.JWT_ACCESS_TOKEN;
+const JWT_REFRESH_TOKEN = config.JWT_REFRESH_TOKEN;
 
 const accessToken = id => {
-  return jwt.sign({ id }, process.env.JWT_ACCESS_TOKEN, {
+  return jwt.sign({ id }, JWT_ACCESS_TOKEN, {
     expiresIn: '20s'
   });
 };
 
 const refreshToken = id => {
-  return jwt.sign({ id }, process.env.JWT_REFRESH_TOKEN, {
+  return jwt.sign({ id }, JWT_REFRESH_TOKEN, {
     expiresIn: '7d'
   });
 };
