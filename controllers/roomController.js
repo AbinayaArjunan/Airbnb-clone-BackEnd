@@ -69,20 +69,20 @@ exports.getAllRooms = async (req, res) => {
     const queryObj = { ...req.query };
     const query = Room.find();
     const rooms = await query;
-    rooms.forEach(ele => {
-      if (ele?.host?.profile?.filePath) {
-        const hostData = fs.readFileSync(ele.host.profile.filePath);
-        const str = hostData.toString('base64');
-        ele.host.profile.data = str;
-      }
-      ele.images.forEach(child => {
-        if (child.filePath) {
-          const data = fs.readFileSync(child.filePath);
-          const base64String = data.toString('base64');
-          child.data = base64String;
-        }
-      });
-    });
+    // rooms.forEach(ele => {
+    //   if (ele?.host?.profile?.filePath) {
+    //     const hostData = fs.readFileSync(ele.host.profile.filePath);
+    //     const str = hostData.toString('base64');
+    //     ele.host.profile.data = str;
+    //   }
+    //   ele.images.forEach(child => {
+    //     if (child.filePath) {
+    //       const data = fs.readFileSync(child.filePath);
+    //       const base64String = data.toString('base64');
+    //       child.data = base64String;
+    //     }
+    //   });
+    // });
     res.status(200).json({
       status: 'success',
       result: rooms.length,
