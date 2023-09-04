@@ -1,8 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { promisify } = require('util');
-const Room = require('../models/roomModel');
-
+let Room = require('../models/roomModel');
 const writeFileAsync = promisify(fs.writeFile);
 
 function generateUniqueFilename(originalName) {
@@ -68,10 +67,10 @@ exports.uploadImage = async (req, res) => {
 exports.getAllRooms = async (req, res) => {
   try {
     const queryObj = { ...req.query };
-    const query = Room.find(queryObj);
+    const query = Room.find();
     const rooms = await query;
     rooms.forEach(ele => {
-      if (ele.host.profile.filePath) {
+      if (ele?.host?.profile?.filePath) {
         const hostData = fs.readFileSync(ele.host.profile.filePath);
         const str = hostData.toString('base64');
         ele.host.profile.data = str;
@@ -90,6 +89,7 @@ exports.getAllRooms = async (req, res) => {
       data: rooms
     });
   } catch (err) {
+    console.log(err);
     res.status(404).json({
       status: 'Not found',
       message: err
