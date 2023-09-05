@@ -76,7 +76,7 @@ exports.getAllRooms = async (req, res) => {
         ele.host.profile.data = str;
       }
       ele.images.forEach(child => {
-        if (child?.filePath) {
+        if (child.filePath) {
           const data = fs.readFileSync(child.filePath);
           const base64String = data.toString('base64');
           child.data = base64String;
