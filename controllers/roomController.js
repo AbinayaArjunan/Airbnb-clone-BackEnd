@@ -70,7 +70,7 @@ exports.getAllRooms = async (req, res) => {
     const query = Room.find(queryObj);
     const rooms = await query;
     rooms.forEach(ele => {
-      if (ele.host.profile.filePath) {
+      if (ele?.host?.profile?.filePath) {
         const hostData = fs.readFileSync(ele.host.profile.filePath);
         const str = hostData.toString('base64');
         ele.host.profile.data = str;
