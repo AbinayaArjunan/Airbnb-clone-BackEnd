@@ -75,13 +75,13 @@ exports.getAllRooms = async (req, res) => {
         const str = hostData.toString('base64');
         ele.host.profile.data = str;
       }
-      // ele.images.forEach(child => {
-      //   if (child?.filePath) {
-      //     const data = fs.readFileSync(child.filePath);
-      //     const base64String = data.toString('base64');
-      //     child.data = base64String;
-      //   }
-      // });
+      ele.images.forEach(child => {
+        if (child?.filePath) {
+          const data = fs.readFileSync(child.filePath);
+          const base64String = data.toString('base64');
+          child.data = base64String;
+        }
+      });
     });
     res.status(200).json({
       status: 'success',
