@@ -30,9 +30,9 @@ app.use((req, res, next) => {
 
 app.use(cookieParser());
 
- app.use('/api/v1', authRouter);
+//  app.use('/api/v1', authRouter);
 app.use('/api/v1', roomRouter);
- app.use('/api/v1', userRouter);
-app.use('/api/v1', bookingRouter);
+//  app.use('/api/v1', userRouter);
+// app.use('/api/v1', bookingRouter);
 
 module.exports = app;
