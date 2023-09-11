@@ -67,7 +67,7 @@ exports.uploadImage = async (req, res) => {
 exports.getAllRooms = async (req, res) => {
   try {
     const queryObj = { ...req.query };
-    const query = Room.find();
+    const query = Room.find(queryObj);
     const rooms = await query;
     rooms.forEach(ele => {
       if (ele?.host?.profile?.filePath) {
